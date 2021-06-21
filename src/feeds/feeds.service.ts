@@ -2,8 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { randomInt } from 'crypto';
 import { RandomUtil } from 'src/random.unit';
-import { Repository } from 'typeorm';
-import { CreateFeedDto } from './dto/create-feed.dto';
+import { getMongoManager, Repository } from 'typeorm';
 import { Feeds } from './entities/feed.entity';
 import { FeedsInterface } from './type/feeds.interface';
 
@@ -14,6 +13,7 @@ export class FeedsService {
     private readonly feedRepository: Repository<Feeds>,
   ) {}
   async create() {
+    const manager = getMongoManager();
     const data: FeedsInterface = {
       title: RandomUtil.randomString(10),
       description: RandomUtil.randomString(10),
@@ -56,7 +56,8 @@ export class FeedsService {
     const dto = new Feeds();
     dto.data = data;
     dto.name = RandomUtil.randomString(5);
-    return await this.feedRepository.save(dto);
+    // return await this.feedRepository.save(dto);
+   return await manager.save(dto)
   }
 
   // findAll() {
