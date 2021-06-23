@@ -4,8 +4,8 @@
                 "namespace" : "test_jsonb.feeds",
                 "indexFilterSet" : false,
                 "parsedQuery" : {
-                        "data.multiMedia.likeCount" : {
-                                "$eq" : 29
+                        "data.multiMedia.name" : {
+                                "$regex" : "^E.*a"
                         }
                 },
                 "winningPlan" : {
@@ -15,17 +15,22 @@
                         },
                         "inputStage" : {
                                 "stage" : "FETCH",
+                                "filter" : {
+                                        "data.multiMedia.name" : {
+                                                "$regex" : "^E.*a"
+                                        }
+                                },
                                 "inputStage" : {
                                         "stage" : "IXSCAN",
                                         "keyPattern" : {
                                                 "$_path" : 1,
-                                                "data.multiMedia.likeCount" : 1
+                                                "data.multiMedia.name" : 1
                                         },
                                         "indexName" : "data.multiMedia.$**_1",
                                         "isMultiKey" : true,
                                         "multiKeyPaths" : {
                                                 "$_path" : [ ],
-                                                "data.multiMedia.likeCount" : [
+                                                "data.multiMedia.name" : [
                                                         "data.multiMedia"
                                                 ]
                                         },
@@ -36,10 +41,11 @@
                                         "direction" : "forward",
                                         "indexBounds" : {
                                                 "$_path" : [
-                                                        "[\"data.multiMedia.likeCount\", \"data.multiMedia.likeCount\"]"
+                                                        "[\"data.multiMedia.name\", \"data.multiMedia.name\"]"
                                                 ],
-                                                "data.multiMedia.likeCount" : [
-                                                        "[29.0, 29.0]"
+                                                "data.multiMedia.name" : [
+                                                        "[\"E\", \"F\")",
+                                                        "[/^E.*a/, /^E.*a/]"
                                                 ]
                                         }
                                 }
@@ -49,57 +55,62 @@
         },
         "executionStats" : {
                 "executionSuccess" : true,
-                "nReturned" : 381,
-                "executionTimeMillis" : 4,
-                "totalKeysExamined" : 381,
-                "totalDocsExamined" : 381,
+                "nReturned" : 125,
+                "executionTimeMillis" : 14,
+                "totalKeysExamined" : 719,
+                "totalDocsExamined" : 699,
                 "executionStages" : {
                         "stage" : "PROJECTION_DEFAULT",
-                        "nReturned" : 381,
-                        "executionTimeMillisEstimate" : 0,
-                        "works" : 382,
-                        "advanced" : 381,
-                        "needTime" : 0,
+                        "nReturned" : 125,
+                        "executionTimeMillisEstimate" : 11,
+                        "works" : 719,
+                        "advanced" : 125,
+                        "needTime" : 593,
                         "needYield" : 0,
-                        "saveState" : 0,
-                        "restoreState" : 0,
+                        "saveState" : 1,
+                        "restoreState" : 1,
                         "isEOF" : 1,
                         "transformBy" : {
                                 "data.multiMedia.$" : 1
                         },
                         "inputStage" : {
                                 "stage" : "FETCH",
-                                "nReturned" : 381,
-                                "executionTimeMillisEstimate" : 0,
-                                "works" : 382,
-                                "advanced" : 381,
-                                "needTime" : 0,
+                                "filter" : {
+                                        "data.multiMedia.name" : {
+                                                "$regex" : "^E.*a"
+                                        }
+                                },
+                                "nReturned" : 125,
+                                "executionTimeMillisEstimate" : 11,
+                                "works" : 719,
+                                "advanced" : 125,
+                                "needTime" : 593,
                                 "needYield" : 0,
-                                "saveState" : 0,
-                                "restoreState" : 0,
+                                "saveState" : 1,
+                                "restoreState" : 1,
                                 "isEOF" : 1,
-                                "docsExamined" : 381,
+                                "docsExamined" : 699,
                                 "alreadyHasObj" : 0,
                                 "inputStage" : {
                                         "stage" : "IXSCAN",
-                                        "nReturned" : 381,
-                                        "executionTimeMillisEstimate" : 0,
-                                        "works" : 382,
-                                        "advanced" : 381,
-                                        "needTime" : 0,
+                                        "nReturned" : 699,
+                                        "executionTimeMillisEstimate" : 11,
+                                        "works" : 719,
+                                        "advanced" : 699,
+                                        "needTime" : 19,
                                         "needYield" : 0,
-                                        "saveState" : 0,
-                                        "restoreState" : 0,
+                                        "saveState" : 1,
+                                        "restoreState" : 1,
                                         "isEOF" : 1,
                                         "keyPattern" : {
                                                 "$_path" : 1,
-                                                "data.multiMedia.likeCount" : 1
+                                                "data.multiMedia.name" : 1
                                         },
                                         "indexName" : "data.multiMedia.$**_1",
                                         "isMultiKey" : true,
                                         "multiKeyPaths" : {
                                                 "$_path" : [ ],
-                                                "data.multiMedia.likeCount" : [
+                                                "data.multiMedia.name" : [
                                                         "data.multiMedia"
                                                 ]
                                         },
@@ -110,16 +121,17 @@
                                         "direction" : "forward",
                                         "indexBounds" : {
                                                 "$_path" : [
-                                                        "[\"data.multiMedia.likeCount\", \"data.multiMedia.likeCount\"]"
+                                                        "[\"data.multiMedia.name\", \"data.multiMedia.name\"]"
                                                 ],
-                                                "data.multiMedia.likeCount" : [
-                                                        "[29.0, 29.0]"
+                                                "data.multiMedia.name" : [
+                                                        "[\"E\", \"F\")",
+                                                        "[/^E.*a/, /^E.*a/]"
                                                 ]
                                         },
-                                        "keysExamined" : 381,
-                                        "seeks" : 1,
-                                        "dupsTested" : 381,
-                                        "dupsDropped" : 0
+                                        "keysExamined" : 719,
+                                        "seeks" : 2,
+                                        "dupsTested" : 717,
+                                        "dupsDropped" : 18
                                 }
                         }
                 }

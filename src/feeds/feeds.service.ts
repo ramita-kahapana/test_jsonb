@@ -29,7 +29,7 @@ export class FeedsService {
       imagePaths: RandomUtil.randomString(10),
       feedsComment: RandomUtil.randomString(10),
       url: RandomUtil.randomString(10),
-      tags: ['A', 'B', 'C'],
+      tags: [RandomUtil.randomString(5), RandomUtil.randomString(5), RandomUtil.randomString(5)],
       likeDislike: {
         likes: randomInt(100),
         dislikes: randomInt(100),

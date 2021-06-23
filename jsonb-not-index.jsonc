@@ -25,51 +25,87 @@
 
 // { "data.multiMedia.mediatype": {"$eq":29},"data.multiMedia.name":"dvRDCYycgf" }
 
+// { "data.multiMedia.name" : {"$elemMatch":{ "$regex": /EA/ }} }
+
+// { "data.multiMedia.$": 1 }
+
+// { "data.multiMedia.name" : { $regex: /^ABC/i } }
+
+// { "data.multiMedia.name" : { $regex: /^le.*UA/ } }
+
+// { "data.multiMedia.name" : { $regex: /^Ea.*a/ , $options: 'q' }}
+
+// db.feeds.dropIndex({ "data.multiMedia.name" : 1 })
+
+//db.feeds.createIndex({ "data.multiMedia.name" : 1 })
+
+// db.feeds.getIndexes()
 {
         "queryPlanner" : {
                 "plannerVersion" : 1,
                 "namespace" : "test_jsonb.feeds",
                 "indexFilterSet" : false,
                 "parsedQuery" : {
-                        "data.multiMedia.likeCount" : {
-                                "$eq" : 29
+                        "data.multiMedia.name" : {
+                                "$regex" : "^E.*a"
                         }
                 },
                 "winningPlan" : {
-                        "stage" : "COLLSCAN",
-                        "filter" : {
-                                "data.multiMedia.likeCount" : {
-                                        "$eq" : 29
-                                }
+                        "stage" : "PROJECTION_DEFAULT",
+                        "transformBy" : {
+                                "data.multiMedia.$" : 1
                         },
-                        "direction" : "forward"
+                        "inputStage" : {
+                                "stage" : "COLLSCAN",
+                                "filter" : {
+                                        "data.multiMedia.name" : {
+                                                "$regex" : "^E.*a"
+                                        }
+                                },
+                                "direction" : "forward"
+                        }
                 },
                 "rejectedPlans" : [ ]
         },
         "executionStats" : {
                 "executionSuccess" : true,
-                "nReturned" : 381,
-                "executionTimeMillis" : 31,
+                "nReturned" : 125,
+                "executionTimeMillis" : 29,
                 "totalKeysExamined" : 0,
                 "totalDocsExamined" : 10000,
                 "executionStages" : {
-                        "stage" : "COLLSCAN",
-                        "filter" : {
-                                "data.multiMedia.likeCount" : {
-                                        "$eq" : 29
-                                }
-                        },
-                        "nReturned" : 381,
-                        "executionTimeMillisEstimate" : 6,
+                        "stage" : "PROJECTION_DEFAULT",
+                        "nReturned" : 125,
+                        "executionTimeMillisEstimate" : 3,
                         "works" : 10002,
-                        "advanced" : 381,
-                        "needTime" : 9620,
+                        "advanced" : 125,
+                        "needTime" : 9876,
                         "needYield" : 0,
                         "saveState" : 10,
                         "restoreState" : 10,
                         "isEOF" : 1,
-                        "direction" : "forward",
-                        "docsExamined" : 10000
+                        "transformBy" : {
+                                "data.multiMedia.$" : 1
+                        },
+                        "inputStage" : {
+                                "stage" : "COLLSCAN",
+                                "filter" : {
+                                        "data.multiMedia.name" : {
+                                                "$regex" : "^E.*a"
+                                        }
+                                },
+                                "nReturned" : 125,
+                                "executionTimeMillisEstimate" : 3,
+                                "works" : 10002,
+                                "advanced" : 125,
+                                "needTime" : 9876,
+                                "needYield" : 0,
+                                "saveState" : 10,
+                                "restoreState" : 10,
+                                "isEOF" : 1,
+                                "direction" : "forward",
+                                "docsExamined" : 10000
+                        }
                 }
         },
         "serverInfo" : {
@@ -80,3 +116,5 @@
         },
         "ok" : 1
 }
+
+// db.feeds.find({ "data.multiMedia.name" : { $regex: /^Ea.*ac/ } },{ "data.multiMedia.$": 1 }).explain("executionStats")
