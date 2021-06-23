@@ -1,0 +1,134 @@
+{
+        "queryPlanner" : {
+                "plannerVersion" : 1,
+                "namespace" : "test_jsonb.feeds",
+                "indexFilterSet" : false,
+                "parsedQuery" : {
+                        "data.multiMedia.likeCount" : {
+                                "$eq" : 29
+                        }
+                },
+                "winningPlan" : {
+                        "stage" : "PROJECTION_DEFAULT",
+                        "transformBy" : {
+                                "data.multiMedia.$" : 1
+                        },
+                        "inputStage" : {
+                                "stage" : "FETCH",
+                                "inputStage" : {
+                                        "stage" : "IXSCAN",
+                                        "keyPattern" : {
+                                                "$_path" : 1,
+                                                "data.multiMedia.likeCount" : 1
+                                        },
+                                        "indexName" : "data.multiMedia.$**_1",
+                                        "isMultiKey" : true,
+                                        "multiKeyPaths" : {
+                                                "$_path" : [ ],
+                                                "data.multiMedia.likeCount" : [
+                                                        "data.multiMedia"
+                                                ]
+                                        },
+                                        "isUnique" : false,
+                                        "isSparse" : false,
+                                        "isPartial" : false,
+                                        "indexVersion" : 2,
+                                        "direction" : "forward",
+                                        "indexBounds" : {
+                                                "$_path" : [
+                                                        "[\"data.multiMedia.likeCount\", \"data.multiMedia.likeCount\"]"
+                                                ],
+                                                "data.multiMedia.likeCount" : [
+                                                        "[29.0, 29.0]"
+                                                ]
+                                        }
+                                }
+                        }
+                },
+                "rejectedPlans" : [ ]
+        },
+        "executionStats" : {
+                "executionSuccess" : true,
+                "nReturned" : 381,
+                "executionTimeMillis" : 4,
+                "totalKeysExamined" : 381,
+                "totalDocsExamined" : 381,
+                "executionStages" : {
+                        "stage" : "PROJECTION_DEFAULT",
+                        "nReturned" : 381,
+                        "executionTimeMillisEstimate" : 0,
+                        "works" : 382,
+                        "advanced" : 381,
+                        "needTime" : 0,
+                        "needYield" : 0,
+                        "saveState" : 0,
+                        "restoreState" : 0,
+                        "isEOF" : 1,
+                        "transformBy" : {
+                                "data.multiMedia.$" : 1
+                        },
+                        "inputStage" : {
+                                "stage" : "FETCH",
+                                "nReturned" : 381,
+                                "executionTimeMillisEstimate" : 0,
+                                "works" : 382,
+                                "advanced" : 381,
+                                "needTime" : 0,
+                                "needYield" : 0,
+                                "saveState" : 0,
+                                "restoreState" : 0,
+                                "isEOF" : 1,
+                                "docsExamined" : 381,
+                                "alreadyHasObj" : 0,
+                                "inputStage" : {
+                                        "stage" : "IXSCAN",
+                                        "nReturned" : 381,
+                                        "executionTimeMillisEstimate" : 0,
+                                        "works" : 382,
+                                        "advanced" : 381,
+                                        "needTime" : 0,
+                                        "needYield" : 0,
+                                        "saveState" : 0,
+                                        "restoreState" : 0,
+                                        "isEOF" : 1,
+                                        "keyPattern" : {
+                                                "$_path" : 1,
+                                                "data.multiMedia.likeCount" : 1
+                                        },
+                                        "indexName" : "data.multiMedia.$**_1",
+                                        "isMultiKey" : true,
+                                        "multiKeyPaths" : {
+                                                "$_path" : [ ],
+                                                "data.multiMedia.likeCount" : [
+                                                        "data.multiMedia"
+                                                ]
+                                        },
+                                        "isUnique" : false,
+                                        "isSparse" : false,
+                                        "isPartial" : false,
+                                        "indexVersion" : 2,
+                                        "direction" : "forward",
+                                        "indexBounds" : {
+                                                "$_path" : [
+                                                        "[\"data.multiMedia.likeCount\", \"data.multiMedia.likeCount\"]"
+                                                ],
+                                                "data.multiMedia.likeCount" : [
+                                                        "[29.0, 29.0]"
+                                                ]
+                                        },
+                                        "keysExamined" : 381,
+                                        "seeks" : 1,
+                                        "dupsTested" : 381,
+                                        "dupsDropped" : 0
+                                }
+                        }
+                }
+        },
+        "serverInfo" : {
+                "host" : "df47ad8e2798",
+                "port" : 27017,
+                "version" : "4.4.6",
+                "gitVersion" : "72e66213c2c3eab37d9358d5e78ad7f5c1d0d0d7"
+        },
+        "ok" : 1
+}

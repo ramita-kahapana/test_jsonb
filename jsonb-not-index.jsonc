@@ -1,0 +1,82 @@
+// {"data.likeDislike.translations.th.label": {"$eq":"ddTzxEIaYu"}}
+
+// { "data.likeDislike.translations.th.label": {"$eq":"VMsAaSNvZy"}, "name": "VsEWd" }
+
+// { "data.multiMedia.mediatype": {"$eq":29} }
+
+// { "data.multiMedia.mediatype": {"$gt": 10,  "$lte": 20} }
+
+// { "data.multiMedia.mediatype": {"$eq":29},"data.likeDislike.likes": {"$lte": 50}}  data.likeDislike.likes <= 50
+
+// { "data.multiMedia.mediatype": { "$in": [ 5, 15 ] } }
+
+// { "data.multiMedia.mediatype": { "$ne": 20 } }
+
+// { "data.multiMedia.mediatype": { "$nin": [ 5, 15 ] } }
+
+// { "data.isdeleted": { "$exists": true , "$nin": [ 5, 15 ]} }
+
+// { "$and": [ { "data.mediatype": { "$ne": 10 } }, { "data.isdeleted": { "$exists": true } } ] }
+
+
+// { "data.multiMedia.mediatype": {"$in": [ 29 ]} }
+
+// { "data.multiMedia.mediatype": {"$eq":29} }
+
+// { "data.multiMedia.mediatype": {"$eq":29},"data.multiMedia.name":"dvRDCYycgf" }
+
+{
+        "queryPlanner" : {
+                "plannerVersion" : 1,
+                "namespace" : "test_jsonb.feeds",
+                "indexFilterSet" : false,
+                "parsedQuery" : {
+                        "data.multiMedia.likeCount" : {
+                                "$eq" : 29
+                        }
+                },
+                "winningPlan" : {
+                        "stage" : "COLLSCAN",
+                        "filter" : {
+                                "data.multiMedia.likeCount" : {
+                                        "$eq" : 29
+                                }
+                        },
+                        "direction" : "forward"
+                },
+                "rejectedPlans" : [ ]
+        },
+        "executionStats" : {
+                "executionSuccess" : true,
+                "nReturned" : 381,
+                "executionTimeMillis" : 31,
+                "totalKeysExamined" : 0,
+                "totalDocsExamined" : 10000,
+                "executionStages" : {
+                        "stage" : "COLLSCAN",
+                        "filter" : {
+                                "data.multiMedia.likeCount" : {
+                                        "$eq" : 29
+                                }
+                        },
+                        "nReturned" : 381,
+                        "executionTimeMillisEstimate" : 6,
+                        "works" : 10002,
+                        "advanced" : 381,
+                        "needTime" : 9620,
+                        "needYield" : 0,
+                        "saveState" : 10,
+                        "restoreState" : 10,
+                        "isEOF" : 1,
+                        "direction" : "forward",
+                        "docsExamined" : 10000
+                }
+        },
+        "serverInfo" : {
+                "host" : "df47ad8e2798",
+                "port" : 27017,
+                "version" : "4.4.6",
+                "gitVersion" : "72e66213c2c3eab37d9358d5e78ad7f5c1d0d0d7"
+        },
+        "ok" : 1
+}
