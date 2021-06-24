@@ -5,13 +5,11 @@ type Entity = Function | string | EntitySchema<any>;
 export const createTestConfiguration = (
   entities: Entity[],
 ): TypeOrmModuleOptions => ({
-  type: 'postgres',
+  type: 'mongodb',
   database: 'test_jsonb',
   entities,
   host: 'localhost',
-  port: 5432,
-  username: 'postgres',
-  password: '1234',
+  port: 27017,
   dropSchema: true,
   synchronize: true,
   logging: false,

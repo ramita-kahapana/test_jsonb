@@ -1,0 +1,146 @@
+{
+        "queryPlanner" : {
+                "plannerVersion" : 1,
+                "namespace" : "test_jsonb.feeds",
+                "indexFilterSet" : false,
+                "parsedQuery" : {
+                        "data.multiMedia.name" : {
+                                "$regex" : "^E.*a"
+                        }
+                },
+                "winningPlan" : {
+                        "stage" : "PROJECTION_DEFAULT",
+                        "transformBy" : {
+                                "data.multiMedia.$" : 1
+                        },
+                        "inputStage" : {
+                                "stage" : "FETCH",
+                                "filter" : {
+                                        "data.multiMedia.name" : {
+                                                "$regex" : "^E.*a"
+                                        }
+                                },
+                                "inputStage" : {
+                                        "stage" : "IXSCAN",
+                                        "keyPattern" : {
+                                                "$_path" : 1,
+                                                "data.multiMedia.name" : 1
+                                        },
+                                        "indexName" : "data.multiMedia.$**_1",
+                                        "isMultiKey" : true,
+                                        "multiKeyPaths" : {
+                                                "$_path" : [ ],
+                                                "data.multiMedia.name" : [
+                                                        "data.multiMedia"
+                                                ]
+                                        },
+                                        "isUnique" : false,
+                                        "isSparse" : false,
+                                        "isPartial" : false,
+                                        "indexVersion" : 2,
+                                        "direction" : "forward",
+                                        "indexBounds" : {
+                                                "$_path" : [
+                                                        "[\"data.multiMedia.name\", \"data.multiMedia.name\"]"
+                                                ],
+                                                "data.multiMedia.name" : [
+                                                        "[\"E\", \"F\")",
+                                                        "[/^E.*a/, /^E.*a/]"
+                                                ]
+                                        }
+                                }
+                        }
+                },
+                "rejectedPlans" : [ ]
+        },
+        "executionStats" : {
+                "executionSuccess" : true,
+                "nReturned" : 125,
+                "executionTimeMillis" : 14,
+                "totalKeysExamined" : 719,
+                "totalDocsExamined" : 699,
+                "executionStages" : {
+                        "stage" : "PROJECTION_DEFAULT",
+                        "nReturned" : 125,
+                        "executionTimeMillisEstimate" : 11,
+                        "works" : 719,
+                        "advanced" : 125,
+                        "needTime" : 593,
+                        "needYield" : 0,
+                        "saveState" : 1,
+                        "restoreState" : 1,
+                        "isEOF" : 1,
+                        "transformBy" : {
+                                "data.multiMedia.$" : 1
+                        },
+                        "inputStage" : {
+                                "stage" : "FETCH",
+                                "filter" : {
+                                        "data.multiMedia.name" : {
+                                                "$regex" : "^E.*a"
+                                        }
+                                },
+                                "nReturned" : 125,
+                                "executionTimeMillisEstimate" : 11,
+                                "works" : 719,
+                                "advanced" : 125,
+                                "needTime" : 593,
+                                "needYield" : 0,
+                                "saveState" : 1,
+                                "restoreState" : 1,
+                                "isEOF" : 1,
+                                "docsExamined" : 699,
+                                "alreadyHasObj" : 0,
+                                "inputStage" : {
+                                        "stage" : "IXSCAN",
+                                        "nReturned" : 699,
+                                        "executionTimeMillisEstimate" : 11,
+                                        "works" : 719,
+                                        "advanced" : 699,
+                                        "needTime" : 19,
+                                        "needYield" : 0,
+                                        "saveState" : 1,
+                                        "restoreState" : 1,
+                                        "isEOF" : 1,
+                                        "keyPattern" : {
+                                                "$_path" : 1,
+                                                "data.multiMedia.name" : 1
+                                        },
+                                        "indexName" : "data.multiMedia.$**_1",
+                                        "isMultiKey" : true,
+                                        "multiKeyPaths" : {
+                                                "$_path" : [ ],
+                                                "data.multiMedia.name" : [
+                                                        "data.multiMedia"
+                                                ]
+                                        },
+                                        "isUnique" : false,
+                                        "isSparse" : false,
+                                        "isPartial" : false,
+                                        "indexVersion" : 2,
+                                        "direction" : "forward",
+                                        "indexBounds" : {
+                                                "$_path" : [
+                                                        "[\"data.multiMedia.name\", \"data.multiMedia.name\"]"
+                                                ],
+                                                "data.multiMedia.name" : [
+                                                        "[\"E\", \"F\")",
+                                                        "[/^E.*a/, /^E.*a/]"
+                                                ]
+                                        },
+                                        "keysExamined" : 719,
+                                        "seeks" : 2,
+                                        "dupsTested" : 717,
+                                        "dupsDropped" : 18
+                                }
+                        }
+                }
+        },
+        "serverInfo" : {
+                "host" : "df47ad8e2798",
+                "port" : 27017,
+                "version" : "4.4.6",
+                "gitVersion" : "72e66213c2c3eab37d9358d5e78ad7f5c1d0d0d7"
+        },
+        "ok" : 1
+}

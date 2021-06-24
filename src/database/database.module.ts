@@ -5,14 +5,14 @@ import { Feeds } from '../feeds/entities/feed.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: '1234',
+      type: 'mongodb',
+      url: 'mongodb://root:example@localhost:27017/test_jsonb?authSource=admin',
+      port: 27017,
       database: 'test_jsonb',
       autoLoadEntities: true,
       synchronize: true,
+      useUnifiedTopology: true,
+      useNewUrlParser: true
     }),
     Feeds,
   ],
