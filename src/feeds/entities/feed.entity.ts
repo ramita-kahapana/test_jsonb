@@ -6,10 +6,8 @@ export class Feeds {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({
-    type: 'jsonb',
-  })
-  data: FeedsInterface;
+  @Column()
+  data: string;
 
   @Column()
   name: string;
