@@ -12,7 +12,7 @@ export class FeedsController {
 
   @Post()
   create(@Body() createFeedDto: CreateFeedDto[]) {
-    for (let index = 0; index < 1; index++) {
+    for (let index = 0; index < 500; index++) {
       this.feedsService.create();
     }
     return 'OK';
