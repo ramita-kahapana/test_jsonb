@@ -652,7 +652,7 @@
 
 "@nestjs/typeorm@^7.1.5":
   version "7.1.5"
-  resolved "https://registry.yarnpkg.com/@nestjs/typeorm/-/typeorm-7.1.5.tgz"
+  resolved "https://registry.yarnpkg.com/@nestjs/typeorm/-/typeorm-7.1.5.tgz#50e3bf85ff8cf78d47d8dd19210c5f02b488f5e3"
   integrity sha512-utE1FkYM/gyCXUqw3zKYYS0YZ3DfkAnzsCx4T48cNnSDTCeWS+u3yt0FMDFjwSiQSaLrzpiSff/FaxJQvRlYow==
   dependencies:
     uuid "8.3.1"
@@ -4427,6 +4427,16 @@ ora@5.4.0:
     strip-ansi "^6.0.0"
     wcwidth "^1.0.1"
 
+oracle@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/oracle/-/oracle-0.4.1.tgz#e25729c291a707f899314606c861280978451aad"
+  integrity sha1-4lcpwpGnB/iZMUYGyGEoCXhFGq0=
+
+oracledb@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/oracledb/-/oracledb-5.2.0.tgz#c5774a38508e2ebd4f899500dfc35daa03b00481"
+  integrity sha512-gHOWTM6ILKOGVH3Z+11Cnpls8XWW7sZUoBrbQWvspYOGpkvJ+TKRr1OdVS21EyeAtfMzXePDrSvG/Mlp/fxOVA==
+
 os-name@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/os-name/-/os-name-4.0.0.tgz"
@@ -5849,7 +5859,7 @@ typedarray@^0.0.6:
 
 typeorm@^0.2.34:
   version "0.2.34"
-  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.34.tgz"
+  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.34.tgz#637b3cec2de54ee7f423012b813a2022c0aacc8b"
   integrity sha512-FZAeEGGdSGq7uTH3FWRQq67JjKu0mgANsSZ04j3kvDYNgy9KwBl/6RFgMVgiSgjf7Rqd7NrhC2KxVT7I80qf7w==
   dependencies:
     "@sqltools/formatter" "^1.2.2"

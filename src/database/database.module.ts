@@ -5,12 +5,13 @@ import { Feeds } from '../feeds/entities/feed.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: '1234',
-      database: 'test_jsonb',
+      type: 'oracle',
+      port: 1521,
+      host: '202.129.205.53',
+      username: 'system',
+      password: 'AppMan1234',
+      sid: 'XE',
+      database:'APPMAN',
       autoLoadEntities: true,
       synchronize: true,
     }),

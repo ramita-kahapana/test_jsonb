@@ -81,7 +81,7 @@ export class FeedsService {
       ],
     };
     const dto = new Feeds();
-    dto.data = data;
+    dto.data_value = JSON.stringify(data)
     dto.name = RandomUtil.randomString(5);
     return await this.feedRepository.save(dto);
   }
